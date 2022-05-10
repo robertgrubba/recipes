@@ -18,7 +18,7 @@ from django.conf import settings
 
 from django.contrib import admin
 from django.urls import path
-
+from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
@@ -26,9 +26,13 @@ urlpatterns = [
 from django.urls import include
 
 urlpatterns += [
+        path('',views.index,name='index'),
+        path('about/',views.about,name='about'),
+        path('products/',views.products,name='products'),
+        path('store/',views.store,name='store'),
         path('ingredients/', include('ingredients.urls')),
         path('recipes/', include('recipes.urls')),
 ]
 
-urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
 
