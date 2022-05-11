@@ -1,6 +1,7 @@
 from django_resized import ResizedImageField
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 # Create your models here.
 
 class Type(models.Model):
@@ -12,6 +13,7 @@ class Type(models.Model):
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=20, help_text='Ingredient name')
+    slug = models.CharField(max_length=20, help_text='Slug of url',default=None,null=True,blank=True)
     type = models.ForeignKey('Type', on_delete=models.SET_NULL, null=True)
     calories = models.IntegerField(help_text='Calories in 100g [g]',default=None)
     fat = models.FloatField(help_text='Fat in 100g [g]',default=None)
@@ -31,12 +33,17 @@ class Ingredient(models.Model):
     water = models.IntegerField(default=None)
     weight = models.IntegerField()
     image = ResizedImageField(size=[500,300],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True)
-    
+
     class Meta:
         ordering = ['-name']
 
     def get_absoulte_url(self):
         return reverse('model-detail-view', args=[str(self.id)])
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Ingredient, self).save(*args, **kwargs)
+    
 
     def __str__(self):
         return self.name
