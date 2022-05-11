@@ -16,7 +16,7 @@ class Ingredient(models.Model):
     calories = models.IntegerField(help_text='Calories in 100g [g]',default=None)
     fat = models.FloatField(help_text='Fat in 100g [g]',default=None)
     sodium = models.FloatField(help_text='Sodium in 100g [mg]',default=None)
-    potasium = models.FloatField(help_text='Potasium in 100g [mg]',default=None)
+    potassium = models.FloatField(help_text='Potasium in 100g [mg]',default=None)
     carbohydrates = models.FloatField(help_text='Carbohydrates in 100g [mg]',default=None)
     dietaryfiber  = models.FloatField(help_text='Dietary Fiber [g]',default=None)
     sugar = models.FloatField(help_text='Sugars in 100g [g]',default=None)
