@@ -1,3 +1,4 @@
+import datetime
 from django_resized import ResizedImageField
 from django.db import models
 from django.urls import reverse
@@ -33,6 +34,9 @@ class Ingredient(models.Model):
     water = models.IntegerField(default=None)
     weight = models.IntegerField()
     image = ResizedImageField(size=[500,300],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True)
+    created = models.DateTimeField(auto_now_add=True,editable=False,null=True)
+    modified = models.DateTimeField(auto_now=True,editable=False)
+    draft = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-name']

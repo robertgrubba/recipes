@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from django_resized import ResizedImageField
 from django.urls import reverse
@@ -49,7 +50,10 @@ class Recipe(models.Model):
     image = ResizedImageField(size=[500,300],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True)
     time = models.IntegerField(help_text='Time required to prepare in minutes',default=None, null=True, blank=True)
     serves = models.IntegerField(help_text='Number of portions from base recipe',default=None,null=True,blank=True)
-    
+    created = models.DateTimeField(auto_now_add=True,editable=False,null=True)
+    modified = models.DateTimeField(auto_now=True,editable=False),
+    draft = models.BooleanField(default=False)
+
     class Meta:
         ordering = ['-name']
 
