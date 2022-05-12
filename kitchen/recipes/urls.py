@@ -7,6 +7,8 @@ from recipes import views
 urlpatterns = [
         path('', views.RecipeListView.as_view(), name='recipes'),
         path('<slug:slug>', views.RecipeDetailView.as_view(), name='recipe'),
+        path('categories/', views.CategoryListView.as_view(), name='categories'),
+        path('categories/<slug:slug>', views.CategoryDetailView.as_view(), name='category'),
         ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

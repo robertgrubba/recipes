@@ -39,8 +39,13 @@ class Ingredient(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, help_text='Category name')
+    slug = models.CharField(max_length=100,help_text='Slug for url',default=None,null=True,blank=True)
     description = models.TextField()
     image = ResizedImageField(size=[500,300],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True)
+
+    def save(self,*args,**kwargs):
+        self.slug = slugify(self.name)
+        super(Category,self).save(*args,**kwargs)
 
     def __str__(self):
         return self.name
