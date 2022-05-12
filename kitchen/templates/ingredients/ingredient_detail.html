@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+     <div class="container">
+            <div class="bg-faded p-3 d-flex ms-auto rounded">
+		    <h2 class="section-heading mb-0">
+			<span class="section-heading-lower">{{ object.name }}</span>	  
+			<span class="section-heading-upper">{{ object.type.name }}</span>	  
+		    </h2>
+	    </div>
+	<div class="d-flex">
+		    <img class="intro-img img-fluid mb-2 mb-lg-2 mt-lg-2 rounded" src={% static object.image %} width="300px" alt="{{ object.name }}" >
+			    <div class="bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 ms-auto rounded">
+				    <h2 class="section-heading mb-3">
+					<span class="section-heading-lower">General Facts</span>	  
+					<span class="section-heading-upper">in 100g</span>	
+				    </h2>
+				    <table class="table table-striped">
+				    	    <tbody>
+						{% if object.calories %}<tr><th scope="row">Energy</th><td> {{ object.calories }}kcal</td></tr>{% endif %}
+					    	{% if object.carbohydrates %}<tr><th scope="row">Carbohydrates</th><td> {{ object.carbohydrates }}g</td></tr> {% endif %}
+		    				{% if object.sugar %}<tr><th scope="row" >Sugars</th><td> {{ object.sugar }}g</td></tr>{% endif %}
+	    					{% if object.dietaryfiber %}<tr><th scope="row">Fiber</th><td> {{ object.dietaryfiber }}g</td></tr>{% endif %}
+    						{% if object.fat %}<tr><th scope="row">Fat</th><td> {{ object.fat }}g</td></tr>{% endif %}
+						{% if object.protein %} <tr><th scope="row">Protein</th><td> {{ object.protein }}g</td></tr>{% endif %}
+						{% if object.water %} <tr><th scope="row">Water</th><td>{{object.water }}g</td></tr>{% endif %}
+				    	    </tbody>
+				</table>
+			    </div>
+			    <div class="bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 ms-auto rounded">
+				    <h2 class="section-heading mb-3">
+					<span class="section-heading-lower">Vitamins</span>	  
+					<span class="section-heading-upper">in 100g</span>	  
+				    </h2>
+				    <table class="table table-striped">
+					    <tbody>
+						    {% if object.vita %}<tr><th scope="row">A</th><td> {{ object.vita }}mg</td></tr>{% endif %}
+						    {% if object.vita1 %} <tr><th scope="row">A1</th><td> {{ object.vita1 }}mg</td></tr>{% endif %}
+						    {% if object.vitb %}<tr><th scope="row">B</th><td> {{ object.vitb }}mg</td></tr>{% endif %}
+						    {% if object.vitb1 %}<tr><th scope="row">B1</th><td> {{ object.vitb1 }}mg</td></tr>{% endif %}
+						    {% if object.vitb2 %}<tr><th scope="row">B2</th><td> {{ object.vitb2 }}mg</td></tr>{% endif %}
+						    {% if object.vitb3 %}<tr><th scope="row">B3</th><td> {{ object.vitb3 }}mg</td></tr>{% endif %}
+						    {% if object.vitb6 %}<tr><th scope="row">B6</th><td> {{ object.vitb6 }}mg</td></tr>{% endif %}
+						    {% if object.vitb12 %}<tr><th scope="row">B12</th><td> {{ object.vitb12 }}mg</td></tr>{% endif %}
+						    {% if object.vitc %}<tr><th scope="row">C</th><td> {{ object.vitc }}mg</td></tr>{% endif %}
+						    {% if object.vite %}<tr><th scope="row">E</th><td> {{ object.vite }}mg</td></tr>{% endif %}
+						    {% if object.vitk %}<tr><th scope="row">K</th><td> {{object.vitk }}mg</td></tr>{% endif %}
+					    </tbody>
+				    </table>
+			    </div>
+			    <div class="bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 ms-auto rounded">
+				    <h2 class="section-heading mb-0">
+					<span class="section-heading-lower">Minerals</span>	  
+					<span class="section-heading-upper">in 100g</span>	  
+				    </h2>
+				    <table class="table table-striped">
+					<tbody>	
+					    {% if object.calcium %} <tr><th scope="row">Calcium</th><td>{{object.calcium }}mg</td></tr>{% endif %}
+					    {% if object.copper %} <tr><th scope="row">Copper</th><td>{{object.copper }}mg</td></tr>{% endif %}
+					    {% if object.iron %} <tr><th scope="row">Iron</th><td>{{object.iron }}mg</td></tr>{% endif %}
+					    {% if object.magnesium %} <tr><th scope="row">Magnesium</th><td>{{object.magnesium }}mg</td></tr>{% endif %}
+					    {% if object.phosphorous %} <tr><th scope="row">Phosphorous</th><td>{{object.phosphorous }}mg</td></tr>{% endif %}
+					    {% if object.potassium %} <tr><th scope="row">Potassium</th><td>{{object.potassium }}mg</td></tr>{% endif %}
+					    {% if object.selenium %} <tr><th scope="row">Selenium</th><td>{{object.selenium }}mg</td></tr>{% endif %}
+					    {% if object.sodium %} <tr><th scope="row">Sodium</th><td>{{object.sodium }}mg</td></tr>{% endif %}
+					    {% if object.zinc %} <tr><th scope="row">Zinc</th><td>{{object.zinc }}mg</td></tr>{% endif %}
+					</tbody>
+				    </table>
+			    </div>
+	</div>
+</div>
+{% endblock %}
+
