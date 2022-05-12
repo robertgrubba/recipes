@@ -8,5 +8,7 @@ def index(request):
     return render(request, 'index.html')
 
 class IngredientListView(ListView):
-        model = Ingredient
+    model = Ingredient
 
+class IngredientDetailView(DetailView):
+    model = Ingredient

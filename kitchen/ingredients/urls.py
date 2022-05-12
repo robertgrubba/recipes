@@ -6,6 +6,7 @@ from ingredients import views
 
 urlpatterns = [
         path('', views.IngredientListView.as_view(), name='ingredients'),
+        path('<slug:slug>', views.IngredientDetailView.as_view(), name='ingredient'),
         ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

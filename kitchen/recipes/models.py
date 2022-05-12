@@ -2,6 +2,7 @@ import datetime
 from django.db import models
 from django_resized import ResizedImageField
 from django.urls import reverse
+from django.utils.text import slugify
 #from ingredients.models import Ingredient
 
 # Create your models here.
@@ -28,6 +29,7 @@ class Ingredient(models.Model):
             ('ml','mililiters'),
             ('l','liters'),
             ('p','pieces'),
+            ('b','bunch'),
     )
 
     measure = models.CharField(max_length=2, choices=MEASURE_UNITS, blank=True, default='g',help_text="Measure units")
@@ -45,6 +47,7 @@ class Category(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=200, help_text='Recipe name')
+    slug = models.CharField(max_length=200, help_text='Slug for url',default=None,null=True,blank=True)
     description = models.TextField()
     category = models.ForeignKey('Category',on_delete=models.SET_NULL, null=True,related_name='recipes')
     image = ResizedImageField(size=[500,300],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True)
@@ -59,6 +62,11 @@ class Recipe(models.Model):
 
     def get_absoulte_url(self):
         return reverse('model-detail-view', args=[str(self.id)])
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Recipe, self).save(*args, **kwargs)
+
 
     def __str__(self):
         return self.name
