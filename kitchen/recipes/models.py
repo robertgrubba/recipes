@@ -18,7 +18,7 @@ class Step(models.Model):
 class Ingredient(models.Model):
     product = models.ForeignKey('ingredients.Ingredient',on_delete=models.SET_NULL,null=True,related_name='ingredients')
     amount = models.FloatField()
-    recipe = models.ForeignKey('Recipe',on_delete=models.SET_NULL,null=True)
+    recipe = models.ForeignKey('Recipe',on_delete=models.SET_NULL,null=True,related_name='ingredients')
 
     MEASURE_UNITS = (
             ('g','grams'),

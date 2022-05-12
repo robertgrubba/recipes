@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+                <h1 class="display-3">Ingredients</h1>
+                <p>blablabla</p>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+        {% for item in object_list %}
+          <div class="col-md-4">
+            <h2>{{ item.name }}</h2>
+            <p><img src="{{request.scheme}}://{{request.get_host}}/{{ item.images.first.path }}" width="100%" alt="{{ item.name }}">opis</p>
+            <p><a class="btn btn-secondary" href="{% url 'ingredient' item.pk %}" role="button">View details</a></p>
+          </div>
+        {% endfor %}
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+{% endblock %}
+
