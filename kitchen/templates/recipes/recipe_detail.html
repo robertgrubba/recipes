@@ -24,6 +24,23 @@
 				    </tbody>
 			</table>
 		    </div>
+		    <div class="bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 ms-auto rounded">
+			    <h2 class="section-heading mb-3">
+				<span class="section-heading-lower">General Facts</span>	  
+				<span class="section-heading-upper">for given proportions ({{weight}}g)</span>	
+			    </h2>
+			    <table class="table table-striped">
+				    <tbody>
+					{% if calories %}<tr><th scope="row">Energy</th><td> {{ calories }}kcal</td></tr>{% endif %}
+					{% if carbohydrates %}<tr><th scope="row">Carbohydrates</th><td> {{ carbohydrates }}g</td></tr> {% endif %}
+					{% if sugar %}<tr><th scope="row" >Sugars</th><td> {{ sugar }}g</td></tr>{% endif %}
+					{% if dietaryfiber %}<tr><th scope="row">Fiber</th><td> {{ dietaryfiber }}g</td></tr>{% endif %}
+					{% if fat %}<tr><th scope="row">Fat</th><td> {{ fat }}g</td></tr>{% endif %}
+					{% if protein %} <tr><th scope="row">Protein</th><td> {{ protein }}g</td></tr>{% endif %}
+					{% if water %} <tr><th scope="row">Water</th><td>{{ water }}g</td></tr>{% endif %}
+				    </tbody>
+			</table>
+		    </div>
 	</div>
 
 		    <div class="d-flex">
@@ -34,7 +51,7 @@
 				    </h2>
 				    <table class="table table-striped">
 				    	    <tbody>
-						{% if object.calories %}<tr><th scope="row">Energy</th><td> {{ object.calories }}kcal</td></tr>{% endif %}
+						{% if calories %}<tr><th scope="row">Energy</th><td> {{ calories }}kcal</td></tr>{% endif %}
 					    	{% if object.carbohydrates %}<tr><th scope="row">Carbohydrates</th><td> {{ object.carbohydrates }}g</td></tr> {% endif %}
 		    				{% if object.sugar %}<tr><th scope="row" >Sugars</th><td> {{ object.sugar }}g</td></tr>{% endif %}
 	    					{% if object.dietaryfiber %}<tr><th scope="row">Fiber</th><td> {{ object.dietaryfiber }}g</td></tr>{% endif %}
