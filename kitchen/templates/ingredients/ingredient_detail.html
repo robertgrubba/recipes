@@ -1,5 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block metadata %}
+        <meta name="description" content="A nutrition tables {{ object.name }}. The page contains information about calories, vitamins and minerals of food ingredient." />
+	<meta name="keywords" content="{{ object.type.name }}, {{ object.name }},nutrients,vitamins,minerals" />
+        <meta name="author" content="" />
+	<meta name="category" content="food" />
+	<meta name="revisit-after" content="30 days" />
+	<meta name='coverage' content='Worldwide' />
+	<meta name='distribution' content='Global' />
+
+	<meta property='og:title' content='{{ object.name }} - Eating Healthy is Fun' />
+	<meta property='og:type' content='recipe' />
+	<meta property='og:url' content='http://eatinghealthyis.fun/ingredients/{{object.slug}}' />
+	<meta property='og:image' content='http://eatinghealthyis.fun{% static object.image %}' />
+	<meta property='og:site_name' content='Eating Healthy is Fun' />
+	<meta property='og:description' content='A nutrition tables {{ object.name }}. The page contains information about calories, vitamins and minerals of food ingredient.' />
+	<meta property='og:updated_time' content='{{ object.modified }}' />
+	<meta property="article:published_time" content='{{ object.created }}' />
+        <title>{{ object.name }} - Eating Healthy is Fun</title>
+{% endblock %}
+
 {% block content %}
 
      <div class="container">
