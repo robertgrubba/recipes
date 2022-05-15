@@ -22,29 +22,32 @@
 {% endblock %}
 {% block content %}
 
-     <div class="container">
+     <div class="container" itemscope itemtype="https://schema.org/Recipe">
             <div class="bg-faded p-3 d-flex ms-auto rounded">
 		    <h2 class="section-heading mb-0">
-			<span class="section-heading-lower">{{ object.name }}</span>	  
+			<span class="section-heading-lower" itemprop="name">{{ object.name }}</span>	  
 			<span class="section-heading-upper">{{ object.category.name }}</span>	  
 		    </h2>
 	    </div>
 	<div class="d-flex">
-		    <img class="intro-img img-fluid mb-2 mb-lg-2 mt-lg-2 rounded" src={% static object.image %} width="50%" alt="{{ object.name }}" >
+		    <img itemprop="image" class="intro-img img-fluid mb-2 mb-lg-2 mt-lg-2 rounded" src={% static object.image %} width="50%" alt="{{ object.name }}" >
 		    <div class="bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 m-1 rounded">
+
 			    <h2 class="section-heading mb-3">
 				<span class="section-heading-lower">Ingredients</span>	  
-				<span class="section-heading-upper">for {{ object.serves }} serves</span>	
+				<span class="section-heading-upper"  >for <span itemprop="recipeYield" >  {{ object.serves }} serves</span></span>	
+				<span class="section-heading-upper"><meta itemprop="prepTime" content="PT{{ object.time }}M"> {{ object.time }} minutes</span>	
 			    </h2>
+			    <p itemprop="description">{{ object.description }}</p>
 			    <table class="table table-striped">
 				    <tbody>
 					    {% for ingredient in object.ingredients.all %}
-					    <tr><th scope="row">{{ ingredient.product.name }}</th><td> {{ ingredient.amount }} {{ ingredient.get_measure_display }}</td></tr>
+					    <tr itemprop="recipeIngredient"><th scope="row">{{ ingredient.product.name }}</th><td> {{ ingredient.amount }} {{ ingredient.get_measure_display }}</td></tr>
 						{% endfor %}
 				    </tbody>
 			</table>
 		    </div>
-		    <div class="bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 m-1 rounded" >
+		    <div class="bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 m-1 rounded" itemprop="recipeInstructions" >
 			    <h2 class="section-heading mb-3">
 				<span class="section-heading-lower">Instructions</span>	  
 				<span class="section-heading-upper">how to prepare</span>	
@@ -57,7 +60,7 @@
 		    </div>
 	</div>
 
-		    <div class="d-flex">
+		    <div class="d-flex" itemprop="nutrition"  itemscope itemtype="https://schema.org/NutritionInformation">
 			    <div class="bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 ms-auto rounded">
 				    <h2 class="section-heading mb-3">
 					<span class="section-heading-lower">General Facts</span>	  
@@ -65,12 +68,12 @@
 				    </h2>
 				    <table class="table table-striped">
 					    <tbody>
-						{% if calories %}<tr><th scope="row">Energy</th><td> {{ calories }}kcal</td></tr>{% endif %}
-						{% if carbohydrates %}<tr><th scope="row">Carbohydrates</th><td> {{ carbohydrates }}g</td></tr> {% endif %}
-						{% if sugar %}<tr><th scope="row" >Sugars</th><td> {{ sugar }}g</td></tr>{% endif %}
-						{% if dietaryfiber %}<tr><th scope="row">Fiber</th><td> {{ dietaryfiber }}g</td></tr>{% endif %}
-						{% if fat %}<tr><th scope="row">Fat</th><td> {{ fat }}g</td></tr>{% endif %}
-						{% if protein %} <tr><th scope="row">Protein</th><td> {{ protein }}g</td></tr>{% endif %}
+						{% if calories %}<tr><th scope="row">Energy</th><td itemprop="calories"> {{ calories }}kcal</td></tr>{% endif %}
+						{% if carbohydrates %}<tr><th scope="row">Carbohydrates</th><td itemprop="carbohydrateContent"> {{ carbohydrates }}g</td></tr> {% endif %}
+						{% if sugar %}<tr><th scope="row" >Sugars</th><td itemprop="sugarContent"> {{ sugar }}g</td></tr>{% endif %}
+						{% if dietaryfiber %}<tr><th scope="row">Fiber</th><td itemprop="fiberContent"> {{ dietaryfiber }}g</td></tr>{% endif %}
+						{% if fat %}<tr><th scope="row">Fat</th><td itemprop="fatContent"> {{ fat }}g</td></tr>{% endif %}
+						{% if protein %} <tr><th scope="row">Protein</th><td itemprop="proteinContent"> {{ protein }}g</td></tr>{% endif %}
 						{% if water %} <tr><th scope="row">Water</th><td>{{ water }}g</td></tr>{% endif %}
 					    </tbody>
 				</table>
@@ -111,7 +114,7 @@
 					    {% if phosphorous %} <tr><th scope="row">Phosphorous</th><td>{{ phosphorous }}mg</td></tr>{% endif %}
 					    {% if potassium %} <tr><th scope="row">Potassium</th><td>{{ potassium }}mg</td></tr>{% endif %}
 					    {% if selenium %} <tr><th scope="row">Selenium</th><td>{{ selenium }}mg</td></tr>{% endif %}
-					    {% if sodium %} <tr><th scope="row">Sodium</th><td>{{ sodium }}mg</td></tr>{% endif %}
+					    {% if sodium %} <tr><th scope="row" >Sodium</th><td itemprop="sodiumContent">{{ sodium }}mg</td></tr>{% endif %}
 					    {% if zinc %} <tr><th scope="row">Zinc</th><td>{{ zinc }}mg</td></tr>{% endif %}
 					</tbody>
 				    </table>
