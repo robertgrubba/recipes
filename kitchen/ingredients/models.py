@@ -60,7 +60,7 @@ class Ingredient(models.Model):
     sodium = models.FloatField(help_text='Sodium in 100g [mg]',default=None,null=True,blank=True)
     zinc = models.FloatField(default=None,null=True,blank=True)
     water = models.IntegerField(default=None,null=True,blank=True)
-    weight = models.IntegerField(help_text='Average weight of piece in grams',default=None,null=True,blank=True)
+    weight = models.FloatField(help_text='Average weight of piece in grams',default=None,null=True,blank=True)
     teaspoon = models.FloatField(help_text='Weight of teaspoon in grams',default=None,null=True,blank=True) 
     tablespoon = models.FloatField(help_text='Weight of tablespoon in grams',default=None,null=True,blank=True)
     cup = models.IntegerField(help_text='Weight of cup in grams',default=None,null=True,blank=True)
