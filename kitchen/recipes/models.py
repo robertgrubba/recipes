@@ -25,10 +25,10 @@ class Ingredient(models.Model):
             ('oz','ounce'),
             ('ts','teaspoon'),
             ('tb','tablespoon'),
-            ('cu','cups'),
+            ('cu','cup'),
             ('gl','glass'),
             ('ml','mililiters'),
-            ('l','liters'),
+            ('l','liter'),
             ('p','piece'),
             ('b','bunch'),
     )
