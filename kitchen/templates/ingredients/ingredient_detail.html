@@ -33,7 +33,7 @@
 	<div class="d-flex row">
 		<div class="col-md-3 reounded">
 		{% if object.image %}
-		    <img class="intro-img img-fluid mb-2 mb-lg-2 mt-lg-2 rounded" src={% static object.image %} width="300px" alt="{{ object.name }}" >
+		    <img class="intro-img img-fluid mb-2 mb-lg-2 mt-lg-2 rounded" src={% static object.image %} width="300" alt="{{ object.name }}" >
 		{% else %}
 		    <img class="intro-img img-fluid mb-2 mb-lg-2 mt-lg-2 rounded" src={% static 'assets/no-image-available.png' %} width="300px" alt="{{ object.name }}" >
 		{% endif %}
