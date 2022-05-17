@@ -65,6 +65,7 @@ class Ingredient(models.Model):
     teaspoon = models.FloatField(help_text='Weight of teaspoon in grams',default=None,null=True,blank=True) 
     tablespoon = models.FloatField(help_text='Weight of tablespoon in grams',default=None,null=True,blank=True)
     cup = models.IntegerField(help_text='Weight of cup in grams',default=None,null=True,blank=True)
+    glass = models.IntegerField(help_text='Weight of glass in grams',default=None,null=True,blank=True)
     bunch = models.IntegerField(help_text='Weight of average bunch of product',default=None,null=True,blank=True)
     image = ResizedImageField(size=[500,300],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True)
     created = models.DateTimeField(auto_now_add=True,editable=False,null=True)
