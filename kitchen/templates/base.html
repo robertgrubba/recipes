@@ -19,22 +19,6 @@
         <!-- Core theme CSS (includes Bootstrap)-->
 	<link href={% static 'css/styles.css' %} rel="stylesheet" />
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-	<script>
-	$("bookmark").click(function(e){
-	    e.preventDefault(); // this will prevent the anchor tag from going the user off to the link
-	    var bookmarkUrl = "http://eatinghealthyis.fun";
-	    var bookmarkTitle = "Eating Healthy is Fun!";
-
-	    if (window.sidebar) { // For Mozilla Firefox Bookmark
-		window.sidebar.addPanel(bookmarkTitle, bookmarkUrl,"");
-	    } else if( window.external || document.all) { // For IE Favorite
-		window.external.AddFavorite( bookmarkUrl, bookmarkTitle);
-	    } else { // for other browsers which does not support
-		 alert('Your browser does not support this bookmark action');
-		 return false;
-	    }
-	  });
-	</script>
     </head>
     <body>
         <header>

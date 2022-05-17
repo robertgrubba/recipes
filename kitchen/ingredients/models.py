@@ -74,8 +74,8 @@ class Ingredient(models.Model):
     class Meta:
         ordering = ['-name']
 
-    def get_absoulte_url(self):
-        return reverse('model-detail-view', args=[str(self.id)])
+    def get_absolute_url(self):
+        return reverse('ingredient', args=[str(self.slug)])
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
