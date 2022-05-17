@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+		<h1 class="display-3 bg-faded rounded row">Recipes in {{ object.name }} category</h1>
+        </div>
+      </div>
+
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+        {% for item in object.recipes.all %}
+          <div class="col-md-3">
+            <div class="bg-faded p-3 d-flex ms-auto rounded">
+		    <h2 class="section-heading mb-0">
+			<span class="section-heading-upper">{{ item.type.name }}</span>	  
+			<span class="section-heading-lower">{{ item.name }}</span>	  
+		    </h2>
+	    </div>
+	    <img class="intro-img img-fluid mb-n3 mb-lg-0 rounded" src={% static item.image %} width="100%" alt="{{ item.name }}" style="margin-bottom: -50px !important">
+	    <div class="intro-button mx-auto" ><a class="btn btn-primary btn-l" href={% url 'recipe' item.slug %}>View Details</a></div>
+          </div>
+        {% endfor %}
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+{% endblock %}
+
