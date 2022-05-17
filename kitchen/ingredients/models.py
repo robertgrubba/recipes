@@ -21,6 +21,7 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=20, help_text='Ingredient name')
     slug = models.CharField(max_length=20, help_text='Slug for url',default=None,null=True,blank=True)
     type = models.ForeignKey('Type', on_delete=models.SET_NULL, null=True,related_name='ingredients')
+    ndbn = models.IntegerField(null=True,default=None,blank=True,help_text='Nutrient Data Bank Number')
     calories = models.IntegerField(help_text='Calories in 100g [g]',default=None,null=True,blank=True)
     fat = models.FloatField(help_text='Fat in 100g [g]',default=None,null=True,blank=True)
     monosaturatedfat = models.FloatField(help_text='Monosaturated Fat in 100g [g]',default=None,null=True,blank=True)
@@ -68,7 +69,7 @@ class Ingredient(models.Model):
     image = ResizedImageField(size=[500,300],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True)
     created = models.DateTimeField(auto_now_add=True,editable=False,null=True)
     modified = models.DateTimeField(auto_now=True,editable=False)
-    draft = models.BooleanField(default=False)
+    draft = models.BooleanField(default=True)
 
     class Meta:
         ordering = ['-name']

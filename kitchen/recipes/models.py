@@ -21,14 +21,15 @@ class Ingredient(models.Model):
     recipe = models.ForeignKey('Recipe',on_delete=models.SET_NULL,null=True,related_name='ingredients')
 
     MEASURE_UNITS = (
-            ('g','grams'),
-            ('oz','ounces'),
-            ('ts','teaspoons'),
-            ('tb','tablespoons'),
+            ('g','gram'),
+            ('oz','ounce'),
+            ('ts','teaspoon'),
+            ('tb','tablespoon'),
             ('cu','cups'),
+            ('gl','glass'),
             ('ml','mililiters'),
             ('l','liters'),
-            ('p','pieces'),
+            ('p','piece'),
             ('b','bunch'),
     )
 
@@ -60,7 +61,7 @@ class Recipe(models.Model):
     serves = models.IntegerField(help_text='Number of portions from base recipe',default=None,null=True,blank=True)
     created = models.DateTimeField(auto_now_add=True,editable=False,null=True)
     modified = models.DateTimeField(auto_now=True,editable=False),
-    draft = models.BooleanField(default=False)
+    draft = models.BooleanField(default=True)
 
     class Meta:
         ordering = ['-name']

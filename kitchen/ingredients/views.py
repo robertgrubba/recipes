@@ -10,5 +10,9 @@ def index(request):
 class IngredientListView(ListView):
     model = Ingredient
 
+    def get_queryset(self):
+        new_context = Ingredient.objects.filter(draft=False)
+        return new_context
+
 class IngredientDetailView(DetailView):
     model = Ingredient
