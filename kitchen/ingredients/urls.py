@@ -6,7 +6,8 @@ from ingredients import views
 
 urlpatterns = [
         path('', views.IngredientListView.as_view(), name='ingredients'),
-        path('importingredients',views.load, name='load'),
+        path('importingredients',views.loadingredients, name='loadingredients'),
+        path('importfood',views.loadfood, name='loadfood'),
         path('<slug:slug>', views.IngredientDetailView.as_view(), name='ingredient'),
         ]
 
