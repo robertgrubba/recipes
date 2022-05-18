@@ -18,8 +18,8 @@ class Type(models.Model):
 
 
 class Ingredient(models.Model):
-    name = models.CharField(max_length=20, help_text='Ingredient name')
-    slug = models.CharField(max_length=20, help_text='Slug for url',default=None,null=True,blank=True)
+    name = models.CharField(max_length=50, help_text='Ingredient name')
+    slug = models.CharField(max_length=50, help_text='Slug for url',default=None,null=True,blank=True)
     type = models.ForeignKey('Type', on_delete=models.SET_NULL, null=True,related_name='ingredients')
     ndbn = models.IntegerField(null=True,default=None,blank=True,help_text='Nutrient Data Bank Number')
     calories = models.IntegerField(help_text='Calories in 100g [g]',default=None,null=True,blank=True)
