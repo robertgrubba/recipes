@@ -3,7 +3,7 @@
 {% load static %}
 <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="container">
-		<h1 class="display-3 bg-faded rounded row">Recipes in {{ object.name }} category</h1>
+		<h1 class="display-3 bg-faded rounded">Recipes in {{ object.name }} category</h1>
 
 		<a class="text-uppercase nav-link" style="display:inline-block" href={% url 'categories' %}>Recipes ></a>
 	    <a class="text-uppercase nav-link" style="display:inline-block;padding:0 rem" href={% url 'category' object.slug %}>{{ object.name }}</a>
