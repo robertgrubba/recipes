@@ -32,6 +32,8 @@ class RecipeAdmin(admin.ModelAdmin):
     search_fields = ['name']
     #inlines = [CategoryInstanceInline,StepInstanceInline,IngredientInstanceInline]
     inlines = [StepInstanceInline,IngredientInstanceInline]
+    list_filter = ['category','draft'] 
+    list_display = ('name','category','draft') 
 
 # Register your models here.
 admin.site.register(Ingredient)
