@@ -29,6 +29,10 @@
 			<span class="section-heading-upper">{{ object.category.name }}</span>	  
 		    </h1>
 	    </div>
+
+  		<a class="text-uppercase nav-link" style="display:inline-block" href={% url 'categories' %}>Recipes ></a>
+            	<a class="text-uppercase nav-link" style="display:inline-block" href={% url 'category' object.category.slug %}>{{ object.category.name }} ></a>
+            	<a class="text-uppercase nav-link" style="display:inline-block" href={% url 'recipe' object.slug %}>{{ object.name }}</a>
 	<div class="d-flex row">
 		<div class="col-md-3 ms-auto">
 		{% if object.image %}
