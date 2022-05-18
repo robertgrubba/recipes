@@ -14,7 +14,7 @@ class Type(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
-        super(Ingredient, self).save(*args, **kwargs)
+        super(Type, self).save(*args, **kwargs)
 
 
 class Ingredient(models.Model):
