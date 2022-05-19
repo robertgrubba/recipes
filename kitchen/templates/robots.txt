@@ -1,0 +1,2 @@
+User-agent: *
+sitemap: http://eatinghealthyis.fun/sitemap.xml

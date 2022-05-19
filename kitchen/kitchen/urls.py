@@ -18,6 +18,8 @@ from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
 from recipes.sitemaps import RecipeSitemap
 from ingredients.sitemaps import IngredientSitemap
+from django.urls import include
+from django.views.generic.base import TemplateView
 
 sitemaps = {
         'recipe': RecipeSitemap,
@@ -32,13 +34,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-from django.urls import include
 
 urlpatterns += [
         path('',views.index,name='index'),
         path('about/',views.about,name='about'),
         path('products/',views.products,name='products'),
         path('store/',views.store,name='store'),
+        path("robots.txt",TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
         path('ingredients/', include('ingredients.urls')),
         path('recipes/', include('recipes.urls')),
         path('sitemap.xml',sitemap,{'sitemaps': sitemaps }),
