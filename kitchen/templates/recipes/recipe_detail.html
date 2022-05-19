@@ -15,7 +15,7 @@
 	<meta property='og:url' content='http://eatinghealthyis.fun/recipes/{{object.slug}}' />
 	<meta property='og:image' content='http://eatinghealthyis.fun{% static object.image %}' />
 	<meta property='og:site_name' content='Eating Healthy is Fun' />
-	<meta property='og:description' content='For {{ serves }} serves: {{ calories }}kcal, carbs: {{carbohydrates}}g, fiber: {{ dietaryfiber }}g, proteins:{{ protein }}g' />
+	<meta property='og:description' content='For {{ serves }} serves: {{ calories }}kcal, carbs: {{carbohydrates}}g, fiber: {{ fiber }}g, proteins:{{ protein }}g' />
 	<meta property='og:updated_time' content='{{ object.modified }}' />
 	<meta property="article:published_time" content='{{ object.created }}' />
         <title>{{ object.name }} - Eating Healthy is Fun</title>
@@ -83,7 +83,7 @@
 							{% if calories %}<tr><th scope="row">Energy</th><td itemprop="calories"> {{ calories }}kcal</td></tr>{% endif %}
 							{% if carbohydrates %}<tr><th scope="row">Carbohydrates</th><td itemprop="carbohydrateContent"> {{ carbohydrates }}g</td></tr> {% endif %}
 							{% if sugar %}<tr><th scope="row" >Sugars</th><td itemprop="sugarContent"> {{ sugar }}g</td></tr>{% endif %}
-							{% if dietaryfiber %}<tr><th scope="row">Fiber</th><td itemprop="fiberContent"> {{ dietaryfiber }}g</td></tr>{% endif %}
+							{% if fiber %}<tr><th scope="row">Fiber</th><td itemprop="fiberContent"> {{ fiber }}g</td></tr>{% endif %}
 							{% if fat %}<tr><th scope="row">Fat</th><td itemprop="fatContent"> {{ fat }}g</td></tr>{% endif %}
 							{% if protein %} <tr><th scope="row">Protein</th><td itemprop="proteinContent"> {{ protein }}g</td></tr>{% endif %}
 							{% if water %} <tr><th scope="row">Water</th><td>{{ water }}g</td></tr>{% endif %}
