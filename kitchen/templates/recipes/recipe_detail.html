@@ -50,7 +50,6 @@
 				<span class="section-heading-upper"  >for <span itemprop="recipeYield" >  {{ object.serves }} serves</span></span>	
 				<span class="section-heading-upper"><meta itemprop="prepTime" content="PT{{ object.time }}M"> {{ object.time }} minutes</span>	
 			    </h2>
-			    <p itemprop="description">{{ object.description }}</p>
 			    <table class="table table-striped">
 				    <tbody>
 					    {% for ingredient in object.ingredients.all %}
@@ -58,6 +57,7 @@
 						{% endfor %}
 				    </tbody>
 			</table>
+			    <p itemprop="description">{{ object.description }}</p>
 		    </div>
 		    <div class="col-md-4 bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 ms-auto rounded" itemprop="recipeInstructions" >
 			    <h2 class="section-heading mb-3">
