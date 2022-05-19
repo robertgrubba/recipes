@@ -98,7 +98,34 @@
 					</tbody>
 				    </table>
 			    </div>
+	{% if object.ingredients %}
+            <div class="bg-faded p-3 d-flex ms-auto rounded">
+		    <h2 class="section-heading mb-0">
+			<span class="section-heading-lower">Recipes with {{ object.name }}</span>	  
+		    </h2>
+	    </div>
+	    <div class="row">
+		{% for product in object.ingredients.all %}
+		  <div class="col-md-2 mt-2 p-0 m-1">
+		    <div class="bg-faded p-3 d-flex ms-auto rounded">
+			    <h3 class="section-heading mb-0">
+				<span class="section-heading-lower">{{ product.recipe.name }}</span>	  
+				<span class="section-heading-upper">{{ product.recipe.category.name }}</span>	  
+			    </h3>
+		    </div>
+		    {% if product.recipe.image %}
+			<img class="intro-img img-fluid mb-n3 mb-lg-0 rounded" src={% static product.recipe.image %} width="100%" alt="{{ product.recipe.name }}" style="margin-bottom: -50px !important">
+		    {% else %}
+		    	<img class="intro-img img-fluid mb-n3 mb-lg-0 rounded" src={% static 'assets/no-image-available.png' %} width="100%" alt="{{ product.recipe.name }}" style="margin-bottom: -50px !important">
+		    {% endif %}
+		    <div class="intro-button mx-auto" ><a class="btn btn-primary btn-l" href={% url 'recipe' product.recipe.slug %}>View Details</a></div>
+		  </div>
+		{% endfor %}
+
+	    </div>	    
+	{% endif %}
 	</div>
+
 </div>
 {% endblock %}
 
