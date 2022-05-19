@@ -10,12 +10,12 @@
 	<meta name='coverage' content='Worldwide' />
 	<meta name='distribution' content='Global' />
 
-	<meta property='og:title' content='{{ object.name }} - Eating Healthy is Fun' />
+	<meta property='og:title' content='Recipe for: {{ object.name }} {{ object.category.name }}' />
 	<meta property='og:type' content='recipe' />
 	<meta property='og:url' content='http://eatinghealthyis.fun/recipes/{{object.slug}}' />
 	<meta property='og:image' content='http://eatinghealthyis.fun{% static object.image %}' />
 	<meta property='og:site_name' content='Eating Healthy is Fun' />
-	<meta property='og:description' content='A recipe for tasty {{ object.name }}. The page contains information about ingredients, instructions and nutrition facts about the meal.' />
+	<meta property='og:description' content='For {{ serves }} serves: {{ calories }}kcal, carbs: {{carbohydrates}}g, fiber: {{ dietaryfiber }}g, proteins:{{ protein }}g' />
 	<meta property='og:updated_time' content='{{ object.modified }}' />
 	<meta property="article:published_time" content='{{ object.created }}' />
         <title>{{ object.name }} - Eating Healthy is Fun</title>
