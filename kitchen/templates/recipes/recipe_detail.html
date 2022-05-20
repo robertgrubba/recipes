@@ -53,7 +53,7 @@
 			    <table class="table table-striped">
 				    <tbody>
 					    {% for ingredient in object.ingredients.all %}
-					    <tr itemprop="recipeIngredient"><th scope="row">{{ ingredient.product.name }}</th><td> {{ ingredient.amount }} {{ ingredient.get_measure_display }}</td></tr>
+					    <tr itemprop="recipeIngredient"><th scope="row"><a class="text-decoration-none text-dark"  href={% url 'ingredient' ingredient.product.slug %}>{{ ingredient.product.name }}</a></th><td> {{ ingredient.amount }} {{ ingredient.get_measure_display }}</td></tr>
 						{% endfor %}
 				    </tbody>
 			</table>
