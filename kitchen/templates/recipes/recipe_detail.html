@@ -64,9 +64,9 @@
 				<span class="section-heading-lower">Instructions</span>	  
 				<span class="section-heading-upper">how to prepare</span>	
 			    </h2>
-			    <ol class="list-group list-group-numbered">
+			    <ol class="list-group list-group-numbered list-group-flush">
 				    {% for step in object.steps.all %}
-				    <li>{{ step.description }}</li>
+				    <li class="list-group-item bg-transparent">{{ step.description }}</li>
 				    {% endfor %}
 			    </ol>
 		    </div>
