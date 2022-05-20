@@ -1,12 +1,25 @@
 {% extends 'base.html' %}
+{% block metadata %}
+        <meta name="description" content="A list of recipes from our database." />
+	<meta name="keywords" content="recipe,receipt,database,categories" />
+        <meta name="author" content="" />
+	<meta name="category" content="food" />
+	<meta name="revisit-after" content="30 days" />
+	<meta name='coverage' content='Worldwide' />
+	<meta name='distribution' content='Global' />
+
+	<meta property='og:title' content='A list of recipes from our database' />
+	<meta property='og:url' content='http://eatinghealthyis.fun/recipes/' />
+	<meta property='og:site_name' content='Eating Healthy is Fun' />
+	<meta property='og:description' content='A list of recipes from our database' />
+        <title>Eating Healthy is Fun - a list of all recipes</title>
+{% endblock %}
 {% block content %}
 {% load static %}
 <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
         <div class="container">
-                <h1 class="display-3 bg-faded rounded">Recipe Categories</h1>
+                <h1 class="display-3 bg-faded rounded">Recipes in our database</h1>
         </div>
-      </div>
 
 
       <div class="container">
@@ -17,7 +30,7 @@
             <div class="bg-faded p-3 d-flex ms-auto rounded">
 		    <h2 class="section-heading mb-0">
 			<span class="section-heading-upper">{{ item.type.name }}</span>	  
-			<span class="section-heading-lower">{{ item.name }} {{item.image}}</span>	  
+			<span class="section-heading-lower">{{ item.name }}</span>	  
 		    </h2>
 	    </div>
 	    {% if item.image %}
