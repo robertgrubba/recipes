@@ -31,6 +31,8 @@ class Ingredient(models.Model):
             ('l','liter'),
             ('p','piece'),
             ('b','bunch'),
+            ('s','slice'),
+            ('c','clove'),
     )
 
     measure = models.CharField(max_length=2, choices=MEASURE_UNITS, blank=True, default='g',help_text="Measure units")
