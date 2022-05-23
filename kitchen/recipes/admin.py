@@ -46,7 +46,7 @@ class RecipeAdmin(admin.ModelAdmin):
         fieldsets = super(RecipeAdmin, self).get_fieldsets(request, obj)
 	
         if not request.user.is_superuser and request.user.groups.filter(name='publisher').count() == 0:
-            remove_from_fieldsets(fieldsets, ('draft',))
+            remove_from_fieldsets(fieldsets, ('draft','slug',))
         return fieldsets
 
 admin.site.register(Category)
