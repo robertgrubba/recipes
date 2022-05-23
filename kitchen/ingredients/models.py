@@ -13,7 +13,8 @@ class Type(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        if self.slug is None:
+            self.slug = slugify(self.name)
         super(Type, self).save(*args, **kwargs)
 
 
@@ -82,7 +83,8 @@ class Ingredient(models.Model):
         return reverse('ingredient', args=[str(self.slug)])
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        if self.slug is None:
+            self.slug = slugify(self.name)
         super(Ingredient, self).save(*args, **kwargs)
     
 

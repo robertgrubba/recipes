@@ -47,7 +47,8 @@ class Category(models.Model):
     image = ResizedImageField(size=[500,300],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True)
 
     def save(self,*args,**kwargs):
-        self.slug = slugify(self.name)
+        if self.slug is None:
+            self.slug = slugify(self.name)
         super(Category,self).save(*args,**kwargs)
 
     def __str__(self):
@@ -73,7 +74,8 @@ class Recipe(models.Model):
         return reverse('recipe', args=[str(self.slug)])
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        if self.slug is None:
+            self.slug = slugify(self.name)
         super(Recipe, self).save(*args, **kwargs)
 
 
