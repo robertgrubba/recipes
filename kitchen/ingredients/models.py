@@ -69,7 +69,7 @@ class Ingredient(models.Model):
     bunch = models.IntegerField(help_text='Weight of average bunch of product',default=None,null=True,blank=True)
     slice = models.FloatField(help_text='Weight of average slice of product',default=None,null=True,blank=True)
     image = ResizedImageField(size=[500,300],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True)
-    thumbnail = ResizedImageField(size=[500,300],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True)
+    image_vertical = ResizedImageField(size=[500,300],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True)
     created = models.DateTimeField(auto_now_add=True,editable=False,null=True)
     modified = models.DateTimeField(auto_now=True,editable=False)
     draft = models.BooleanField(default=True)
