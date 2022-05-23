@@ -34,7 +34,7 @@ class Ingredient(models.Model):
     alphacarotene = models.FloatField(help_text='Alpha Carotene in 100g [mg]',default=None,null=True,blank=True)
     betacarotene = models.FloatField(help_text='Beta Carotene in 100g [mg]', default=None,null=True,blank=True)
     betacryptoxanthin = models.FloatField(help_text='Beta Cryptoxanthin in 100g [mg]', default=None,null=True,blank=True)
-    cholesterol = models.IntegerField(help_text='Cholesterol in 100g [mg]',default=None,null=True,blank=True)
+    cholesterol = models.FloatField(help_text='Cholesterol in 100g [mg]',default=None,null=True,blank=True)
     choline = models.FloatField(help_text='Choline in 100g [mg]',default=None,null=True,blank=True)
     luteinzeaxanthin = models.FloatField(help_text='Lutein and Zeaxanthin in 100g [mg]', default=None,null=True,blank=True)
     lycopene = models.FloatField(help_text='Lycopene in 100g [mg]', default=None,null=True,blank=True)
