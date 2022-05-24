@@ -75,7 +75,10 @@ class Recipe(models.Model):
 
     def save(self, *args, **kwargs):
         if self.slug is None:
-            self.slug = slugify(self.name)
+            if Recipe.objects.filter(slug=slugify(self.name)).exists():
+               	self.slug=slugify(self.name)+"-"+str(Recipe.objects.filter(slug=slugify(self.name)).count())
+            else:
+                self.slug = slugify(self.name)
         super(Recipe, self).save(*args, **kwargs)
 
 

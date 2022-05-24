@@ -84,7 +84,10 @@ class Ingredient(models.Model):
 
     def save(self, *args, **kwargs):
         if self.slug is None:
-            self.slug = slugify(self.name)
+            if Ingredient.objects.filter(slug=slugify(self.name)).exists():
+                self.slug=slugify(self.name)+"-"+str(Ingredient.objects.filter(slug=slugify(self.name)).count())
+            else:
+                self.slug = slugify(self.name)
         super(Ingredient, self).save(*args, **kwargs)
     
 
