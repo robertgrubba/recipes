@@ -28,6 +28,11 @@
 			<span class="section-heading-lower" itemprop="name">{{ object.name }}</span>	  
 			<span class="section-heading-upper">{{ object.category.name }}</span>	  
 		    </h1>
+
+		    {% if request.user.is_authenticated %}
+		    <p class="card-text"><a href="{% url 'admin:recipes_recipe_change' object.pk %}">EDIT</a></p>
+		    {% endif %}
+
 	    </div>
 
   		<a class="text-uppercase nav-link" style="display:inline-block" href={% url 'categories' %}>Recipes ></a>
