@@ -26,7 +26,7 @@
         <!-- Example row of columns -->
         <div class="row">
         {% for item in object_list %}
-          <div class="col-md-3 mt-3">
+          <div class="col-md-3 mt-4">
             <div class="bg-faded p-3 d-flex ms-auto rounded">
 		    <h2 class="section-heading mb-0">
 			<span class="section-heading-upper">{{ item.type.name }}</span>	  
@@ -38,7 +38,7 @@
 	    {% else %}
 	        <img class="intro-img img-fluid mb-n3 mb-lg-0 rounded" src={% static 'assets/no-image-available.png' %} width="100%" alt="{{ item.name }}" style="margin-bottom: -50px !important">
 	    {% endif %}
-	    <div class="intro-button mx-auto" ><a class="btn btn-primary btn-l" href={% url 'recipe' item.slug %}>View Details</a></div>
+	    <div class="intro-button mx-auto" ><a class="btn btn-primary btn-l" href={% url 'recipe' item.slug %}>View Recipe</a></div>
           </div>
         {% endfor %}
         </div>
