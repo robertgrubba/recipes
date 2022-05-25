@@ -136,7 +136,7 @@
 		    {% else %}
 		    	<img class="intro-img img-fluid mb-n3 mb-lg-0 rounded" src={% static 'assets/no-image-available.png' %} width="100%" alt="{{ product.recipe.name }}" style="margin-bottom: -50px !important">
 		    {% endif %}
-		    <div class="intro-button mx-auto" ><a class="btn btn-primary btn-l" href={% url 'recipe' product.recipe.slug %}>View Details</a></div>
+		    <div class="intro-button mx-auto" ><a class="btn btn-primary btn-l" href={% url 'recipe' product.recipe.slug %}>View Recipe</a></div>
 		  </div>
 		{% endfor %}
 
