@@ -39,10 +39,12 @@
             	<a class="text-uppercase nav-link" style="display:inline-block" href={% url 'category' object.category.slug %}>{{ object.category.name }} ></a>
             	<a class="text-uppercase nav-link" style="display:inline-block" href={% url 'recipe' object.slug %}>{{ object.name }}</a>
 	<div class="d-flex row">
-		<div class="col-md-3 ms-auto">
-		{% if object.image %}
+		<div class="col-md-4 ms-auto">
+		{% if object.image_vertical %}
+		    <img style="width:100%" itemprop="image" class="intro-img img-fluid mb-2 mb-lg-2 mt-lg-2 rounded" src={% static object.image_vertical %} alt="{{ object.name }}" >
+		{% elif object.image %}
 		    <img style="width:100%" itemprop="image" class="intro-img img-fluid mb-2 mb-lg-2 mt-lg-2 rounded" src={% static object.image %} alt="{{ object.name }}" >
-		{% else %}
+		    {% else %}
 		    <img style="width:100%" itemprop="image" class="intro-img img-fluid mb-2 mb-lg-2 mt-lg-2 rounded" src={% static 'assets/no-image-available.png' %} alt="{{ object.name }}" >
 		{% endif %}
 		</div>
