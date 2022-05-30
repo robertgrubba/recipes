@@ -44,7 +44,7 @@ class Category(models.Model):
     name = models.CharField(max_length=100, help_text='Category name')
     slug = models.CharField(max_length=100,help_text='Slug for url',default=None,null=True,blank=True)
     description = models.TextField()
-    image = ResizedImageField(size=[500,300],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True)
+    image = ResizedImageField(size=[624,416],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True)
 
     def save(self,*args,**kwargs):
         if self.slug is None:
@@ -59,8 +59,8 @@ class Recipe(models.Model):
     slug = models.CharField(max_length=200, help_text='Slug for url',default=None,null=True,blank=True)
     description = models.TextField()
     category = models.ForeignKey('Category',on_delete=models.SET_NULL, null=True,related_name='recipes')
-    image = ResizedImageField(size=[500,300],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True,help_text="major image of meal for listing pages, horizontal")
-    image_vertical = ResizedImageField(size=[500,300],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True,help_text="image for thumbnail recipe page, vertical")
+    image = ResizedImageField(size=[624,416],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True,help_text="major image of meal for listing pages, horizontal")
+    image_vertical = ResizedImageField(size=[624,416],quality=85,keep_meta=True,upload_to='images/%Y/%m/%d/',default=None,null=True,blank=True,help_text="image for thumbnail recipe page, vertical")
     time = models.IntegerField(help_text='Time required to prepare in minutes',default=None, null=True, blank=True)
     serves = models.IntegerField(help_text='Number of portions from base recipe',default=None,null=True,blank=True)
     created = models.DateTimeField(auto_now_add=True,editable=False,null=True)
