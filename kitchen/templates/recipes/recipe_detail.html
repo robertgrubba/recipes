@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load recipe_extras %}
 
 {% block metadata %}
         <meta name="description" content="A recipe for tasty {{ object.name |title }}. The page contains information about ingredients, instructions and nutrition facts about the meal." />
@@ -80,61 +81,65 @@
 	</div>
 
 		    <div class="row" itemprop="nutrition"  itemscope itemtype="https://schema.org/NutritionInformation">
-				    <div class="col-md-3 bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 ms-auto rounded">
+				    <div class="col-md-4 bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 ms-auto rounded">
 					    <h2 class="section-heading mb-3">
 						<span class="section-heading-lower">General Facts</span>	  
-						<span class="section-heading-upper">for given proportions ({{weight}}g)</span>	
+						<span class="section-heading-upper">for given proportions</span>	
 					    </h2>
 					    <table class="table table-striped">
 						    <tbody>
-							{% if calories %}<tr><th scope="row">Energy</th><td itemprop="calories"> {{ calories }}kcal</td></tr>{% endif %}
-							{% if carbohydrates %}<tr><th scope="row">Carbohydrates</th><td itemprop="carbohydrateContent"> {{ carbohydrates }}g</td></tr> {% endif %}
-							{% if sugar %}<tr><th scope="row" >Sugars</th><td itemprop="sugarContent"> {{ sugar }}g</td></tr>{% endif %}
-							{% if fiber %}<tr><th scope="row">Fiber</th><td itemprop="fiberContent"> {{ fiber }}g</td></tr>{% endif %}
-							{% if fat %}<tr><th scope="row">Fat</th><td itemprop="fatContent"> {{ fat }}g</td></tr>{% endif %}
-							{% if protein %} <tr><th scope="row">Protein</th><td itemprop="proteinContent"> {{ protein }}g</td></tr>{% endif %}
-							{% if water %} <tr><th scope="row">Water</th><td>{{ water }}g</td></tr>{% endif %}
+							    <tr><th></th><th>total ({{weight}}g)</th><th>per serve ({{weight|div:object.serves}}g)</th><th>units</th></tr>
+							    {% if calories %}<tr><th scope="row">Energy</th><td itemprop="calories"> {{ calories }}</td><td>{{ calories|div:object.serves }}</td><td>kcal</td></tr>{% endif %}
+							    {% if carbohydrates %}<tr><th scope="row">Carbohydrates</th><td itemprop="carbohydrateContent"> {{ carbohydrates }}</td><td>{{ carbohydrates|div:object.serves }}</td><td>g</td></tr> {% endif %}
+							    {% if sugar %}<tr><th scope="row" >Sugars</th><td itemprop="sugarContent"> {{ sugar }}</td><td>{{ sugar|div:object.serves }}</td><td>g</td></tr>{% endif %}
+									    {% if fiber %}<tr><th scope="row">Fiber</th><td itemprop="fiberContent"> {{ fiber }}</td><td>{{ fiber|div:object.serves }}</td><td>g</td></tr>{% endif %}
+									    {% if fat %}<tr><th scope="row">Fat</th><td itemprop="fatContent"> {{ fat }}</td><td>{{ fat|div:object.serves}}</td><td>g</td></tr>{% endif %}
+									    {% if protein %} <tr><th scope="row">Protein</th><td itemprop="proteinContent"> {{ protein }}</td><td>{{ protein|div:object.serves}}</td><td>g</td></tr>{% endif %}
+									    {% if water %} <tr><th scope="row">Water</th><td>{{ water }}</td><td>{{ water|div:object.serves }}</td><td>g</td></tr>{% endif %}
 						    </tbody>
 					</table>
 				    </div>
-				    <div class="col-md-3 bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 ms-auto rounded">
+				    <div class="col-md-4 bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 ms-auto rounded">
 					    <h2 class="section-heading mb-3">
 						<span class="section-heading-lower">Vitamins</span>	  
-						<span class="section-heading-upper">for given proportions ({{ weight }}g)</span>	  
+						<span class="section-heading-upper">for given proportions</span>	  
 					    </h2>
 					    <table class="table table-striped">
 						    <tbody>
-							    {% if vita %}<tr><th scope="row">A</th><td> {{ vita }}mg</td></tr>{% endif %}
-							    {% if vita1 %} <tr><th scope="row">A1</th><td> {{ vita1 }}mg</td></tr>{% endif %}
-							    {% if vitb %}<tr><th scope="row">B</th><td> {{ vitb }}mg</td></tr>{% endif %}
-							    {% if vitb1 %}<tr><th scope="row">B1</th><td> {{ vitb1 }}mg</td></tr>{% endif %}
-							    {% if vitb2 %}<tr><th scope="row">B2</th><td> {{ vitb2 }}mg</td></tr>{% endif %}
-							    {% if vitb3 %}<tr><th scope="row">B3</th><td> {{ vitb3 }}mg</td></tr>{% endif %}
-							    {% if vitb6 %}<tr><th scope="row">B6</th><td> {{ vitb6 }}mg</td></tr>{% endif %}
-							    {% if vitb12 %}<tr><th scope="row">B12</th><td> {{ vitb12 }}mg</td></tr>{% endif %}
-							    {% if vitc %}<tr><th scope="row">C</th><td> {{ vitc }}mg</td></tr>{% endif %}
-							    {% if vite %}<tr><th scope="row">E</th><td> {{ vite }}mg</td></tr>{% endif %}
-							    {% if vitk %}<tr><th scope="row">K</th><td> {{vitk }}mg</td></tr>{% endif %}
+							    <tr><th></th><th>total ({{weight}}g)</th><th>per serve ({{weight|div:object.serves}}g)</th><th>units</th></tr>
+							    {% if vita %}<tr><th scope="row">A</th><td> {{ vita }}</td><td>{{ vita|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+							    {% if vita1 %} <tr><th scope="row">A1</th><td> {{ vita1 }}</td><td>{{ vita1|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+							    {% if vitb %}<tr><th scope="row">B</th><td> {{ vitb }}</td><td>{{ vitb|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+							    {% if vitb1 %}<tr><th scope="row">B1</th><td> {{ vitb1 }}</td><td>{{ vitb1|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+							    {% if vitb2 %}<tr><th scope="row">B2</th><td> {{ vitb2 }}</td><td>{{ vitb2|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+							    {% if vitb3 %}<tr><th scope="row">B3</th><td> {{ vitb3 }}</td><td>{{ vitb3|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+							    {% if vitb5 %}<tr><th scope="row">B5</th><td> {{ vitb5 }}</td><td>{{ vitb5|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+							    {% if vitb6 %}<tr><th scope="row">B6</th><td> {{ vitb6 }}</td><td>{{ vitb6|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+							    {% if vitb12 %}<tr><th scope="row">B12</th><td> {{ vitb12 }}</td>{{ vitb12|div:object.serves }}<td><td>mg</td></td></tr>{% endif %}
+							    {% if vitc %}<tr><th scope="row">C</th><td> {{ vitc }}</td><td>{{ vitc|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+							    {% if vite %}<tr><th scope="row">E</th><td> {{ vite }}</td><td>{{ vite|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+							    {% if vitk %}<tr><th scope="row">K</th><td> {{vitk }}</td><td>{{ vitk|div:object.serves }}</td><td>mg</td></tr>{% endif %}
 						    </tbody>
 					    </table>
 				    </div>
-				    <div class="col-md-3 bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 ms-auto rounded">
+				    <div class="col-md-4 bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 ms-auto rounded">
 					    <h2 class="section-heading mb-0">
 						<span class="section-heading-lower">Minerals</span>	  
-						<span class="section-heading-upper">for given proportions ({{ weight }}g)</span>	  
+						<span class="section-heading-upper">for given proportions</span>	  
 					    </h2>
 					    <table class="table table-striped">
 						<tbody>	
-						    {% if calcium %} <tr><th scope="row">Calcium</th><td>{{ calcium }}mg</td></tr>{% endif %}
-						    {% if copper %} <tr><th scope="row">Copper</th><td>{{ copper }}mg</td></tr>{% endif %}
-						    {% if iron %} <tr><th scope="row">Iron</th><td>{{ iron }}mg</td></tr>{% endif %}
-						    {% if magnesium %} <tr><th scope="row">Magnesium</th><td>{{ magnesium }}mg</td></tr>{% endif %}
-						    {% if manganium %} <tr><th scope="row">Magnesium</th><td>{{ manganium }}mg</td></tr>{% endif %}
-						    {% if phosphorous %} <tr><th scope="row">Phosphorous</th><td>{{ phosphorous }}mg</td></tr>{% endif %}
-						    {% if potassium %} <tr><th scope="row">Potassium</th><td>{{ potassium }}mg</td></tr>{% endif %}
-						    {% if selenium %} <tr><th scope="row">Selenium</th><td>{{ selenium }}mg</td></tr>{% endif %}
-						    {% if sodium %} <tr><th scope="row" >Sodium</th><td itemprop="sodiumContent">{{ sodium }}mg</td></tr>{% endif %}
-						    {% if zinc %} <tr><th scope="row">Zinc</th><td>{{ zinc }}mg</td></tr>{% endif %}
+						    <tr><th></th><th>total ({{weight}}g)</th><th>per serve ({{weight|div:object.serves}}g)</th><th>units</th></tr>
+						    {% if calcium %} <tr><th scope="row">Calcium</th><td>{{ calcium }}</td><td>{{ calcium|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+						    {% if copper %} <tr><th scope="row">Copper</th><td>{{ copper }}</td><td>{{ copper|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+						    {% if iron %} <tr><th scope="row">Iron</th><td>{{ iron }}</td><td>{{ iron|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+						    {% if magnesium %} <tr><th scope="row">Magnesium</th><td>{{ magnesium }}</td><td>{{ magnesium|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+						    {% if manganium %} <tr><th scope="row">Magnesium</th><td>{{ manganium }}</td><td>{{ manganium|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+						    {% if phosphorous %} <tr><th scope="row">Phosphorous</th><td>{{ phosphorous }}</td><td>{{ phosphorous|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+						    {% if potassium %} <tr><th scope="row">Potassium</th><td>{{ potassium }}</td><td>{{ potassium|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+						    {% if selenium %} <tr><th scope="row">Selenium</th><td>{{ selenium }}</td><td>{{ selenium|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+						    {% if sodium %} <tr><th scope="row" >Sodium</th><td itemprop="sodiumContent">{{ sodium }}</td><td>{{ sodium|div:object.serves }}</td><td>mg</td></tr>{% endif %}
+						    {% if zinc %} <tr><th scope="row">Zinc</th><td>{{ zinc }}</td><td>{{ zinc|div:object.serves }}</td><td>mg</td></tr>{% endif %}
 						</tbody>
 					    </table>
 				    </div>
