@@ -122,3 +122,7 @@ class IngredientListView(ListView):
 
 class IngredientDetailView(DetailView):
     model = Ingredient
+
+    def get_queryset(self):
+        qs = super(IngredientDetailView, self).get_queryset()
+        return qs.filter(draft=False)
