@@ -80,9 +80,10 @@ class RecipeDetailView(DetailView):
                 if ingredient.product.selenium: selenium = selenium + ((ingredient.amount * ingredient.product.weight)/100 * ingredient.product.selenium)
                 if ingredient.product.sodium: sodium = sodium + ((ingredient.amount * ingredient.product.weight)/100 * ingredient.product.sodium)
                 if ingredient.product.zinc: zinc = zinc + ((ingredient.amount * ingredient.product.weight)/100 * ingredient.product.zinc)
+
             if ingredient.measure == 'cu': 
                 if ingredient.product.calories: calories =calories + ((ingredient.amount * ingredient.product.cup)/100 * ingredient.product.calories)
-                if ingredient.product.weight: weight = weight + (ingredient.amount * ingredient.product.cup)
+                if ingredient.product.cup: weight = weight + (ingredient.amount * ingredient.product.cup)
                 if ingredient.product.carbohydrates: carbohydrates = carbohydrates + ((ingredient.amount * ingredient.product.cup)/100 * ingredient.product.carbohydrates)
                 if ingredient.product.water: water = water + ((ingredient.amount * ingredient.product.cup)/100 * ingredient.product.water)
                 if ingredient.product.sugar: sugar = sugar + ((ingredient.amount * ingredient.product.cup)/100 * ingredient.product.sugar)
@@ -114,7 +115,7 @@ class RecipeDetailView(DetailView):
 
             if ingredient.measure == 'gl': 
                 if ingredient.product.calories: calories =calories + ((ingredient.amount * ingredient.product.glass)/100 * ingredient.product.calories)
-                if ingredient.product.weight: weight = weight + (ingredient.amount * ingredient.product.glass)
+                if ingredient.product.glass: weight = weight + (ingredient.amount * ingredient.product.glass)
                 if ingredient.product.carbohydrates: carbohydrates = carbohydrates + ((ingredient.amount * ingredient.product.glass)/100 * ingredient.product.carbohydrates)
                 if ingredient.product.water: water = water + ((ingredient.amount * ingredient.product.glass)/100 * ingredient.product.water)
                 if ingredient.product.sugar: sugar = sugar + ((ingredient.amount * ingredient.product.glass)/100 * ingredient.product.sugar)
@@ -146,7 +147,7 @@ class RecipeDetailView(DetailView):
 
             if ingredient.measure == 'b': 
                 if ingredient.product.calories: calories =calories + ((ingredient.amount * ingredient.product.bunch)/100 * ingredient.product.calories)
-                if ingredient.product.weight: weight = weight + (ingredient.amount * ingredient.product.bunch)
+                if ingredient.product.bunch: weight = weight + (ingredient.amount * ingredient.product.bunch)
                 if ingredient.product.carbohydrates: carbohydrates = carbohydrates + ((ingredient.amount * ingredient.product.bunch)/100 * ingredient.product.carbohydrates)
                 if ingredient.product.water: water = water + ((ingredient.amount * ingredient.product.bunch)/100 * ingredient.product.water)
                 if ingredient.product.sugar: sugar = sugar + ((ingredient.amount * ingredient.product.bunch)/100 * ingredient.product.sugar)
@@ -178,7 +179,7 @@ class RecipeDetailView(DetailView):
 
             if ingredient.measure == 's': 
                 if ingredient.product.calories: calories =calories + ((ingredient.amount * ingredient.product.slice)/100 * ingredient.product.calories)
-                if ingredient.product.weight: weight = weight + (ingredient.amount * ingredient.product.slice)
+                if ingredient.product.slice: weight = weight + (ingredient.amount * ingredient.product.slice)
                 if ingredient.product.carbohydrates: carbohydrates = carbohydrates + ((ingredient.amount * ingredient.product.slice)/100 * ingredient.product.carbohydrates)
                 if ingredient.product.water: water = water + ((ingredient.amount * ingredient.product.slice)/100 * ingredient.product.water)
                 if ingredient.product.sugar: sugar = sugar + ((ingredient.amount * ingredient.product.slice)/100 * ingredient.product.sugar)
@@ -210,7 +211,7 @@ class RecipeDetailView(DetailView):
 
             if ingredient.measure == 'c': 
                 if ingredient.product.calories: calories =calories + ((ingredient.amount * ingredient.product.clove)/100 * ingredient.product.calories)
-                if ingredient.product.weight: weight = weight + (ingredient.amount * ingredient.product.clove)
+                if ingredient.product.clove: weight = weight + (ingredient.amount * ingredient.product.clove)
                 if ingredient.product.carbohydrates: carbohydrates = carbohydrates + ((ingredient.amount * ingredient.product.clove)/100 * ingredient.product.carbohydrates)
                 if ingredient.product.water: water = water + ((ingredient.amount * ingredient.product.clove)/100 * ingredient.product.water)
                 if ingredient.product.sugar: sugar = sugar + ((ingredient.amount * ingredient.product.clove)/100 * ingredient.product.sugar)
@@ -242,7 +243,7 @@ class RecipeDetailView(DetailView):
 
             if ingredient.measure == 'ml': 
                 if ingredient.product.calories: calories =calories + ((ingredient.amount )/100 * ingredient.product.calories)
-                if ingredient.product.weight: weight = weight + (ingredient.amount )
+                weight = weight + (ingredient.amount )
                 if ingredient.product.carbohydrates: carbohydrates = carbohydrates + ((ingredient.amount )/100 * ingredient.product.carbohydrates)
                 if ingredient.product.water: water = water + ((ingredient.amount )/100 * ingredient.product.water)
                 if ingredient.product.sugar: sugar = sugar + ((ingredient.amount )/100 * ingredient.product.sugar)
@@ -274,7 +275,7 @@ class RecipeDetailView(DetailView):
 
             if ingredient.measure == 'l': 
                 if ingredient.product.calories: calories =calories + ((ingredient.amount * 1000 )/100 * ingredient.product.calories)
-                if ingredient.product.weight: weight = weight + (ingredient.amount * 1000 )
+                weight = weight + (ingredient.amount * 1000 )
                 if ingredient.product.carbohydrates: carbohydrates = carbohydrates + ((ingredient.amount * 1000 )/100 * ingredient.product.carbohydrates)
                 if ingredient.product.water: water = water + ((ingredient.amount * 1000 )/100 * ingredient.product.water)
                 if ingredient.product.sugar: sugar = sugar + ((ingredient.amount * 1000 )/100 * ingredient.product.sugar)
@@ -306,7 +307,7 @@ class RecipeDetailView(DetailView):
 
             if ingredient.measure == 'g': 
                 if ingredient.product.calories: calories =calories + ((ingredient.amount )/100 * ingredient.product.calories)
-                if ingredient.product.weight: weight = weight + (ingredient.amount )
+                weight = weight + (ingredient.amount )
                 if ingredient.product.carbohydrates: carbohydrates = carbohydrates + ((ingredient.amount )/100 * ingredient.product.carbohydrates)
                 if ingredient.product.water: water = water + ((ingredient.amount )/100 * ingredient.product.water)
                 if ingredient.product.sugar: sugar = sugar + ((ingredient.amount )/100 * ingredient.product.sugar)
