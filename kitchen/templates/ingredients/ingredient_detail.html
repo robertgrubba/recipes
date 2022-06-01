@@ -27,7 +27,7 @@
             <div class="bg-faded p-3 d-flex ms-auto rounded row">
 		    <h1 class="section-heading mb-0">
 			<span class="section-heading-lower">{{ object.name }}</span>	  
-			<span class="section-heading-upper">{{ object.type.name }}</span>	  
+			<span class="section-heading-upper italic">Updated: {{ object.modified|date:"jS M Y" }}</span>	  
 		    </h1>
 	    </div>
 	<div class="d-flex row">
