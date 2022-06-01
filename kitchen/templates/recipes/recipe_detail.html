@@ -27,7 +27,7 @@
             <div class="bg-faded p-3 d-flex ms-auto rounded row">
 		    <h1 class="section-heading mb-0">
 			<span class="section-heading-lower" itemprop="name">{{ object.name }}</span>	  
-			<span class="section-heading-upper">{{ object.created|date:"jS M Y" }}</span>	
+			<span class="section-heading-upper" itemprop="dateCreated">{{ object.created|date:"jS M Y" }}</span>	
 		    </h1>
 
 		    {% if request.user.is_authenticated %}
@@ -37,7 +37,7 @@
 	    </div>
 
   		<a class="text-uppercase nav-link" style="display:inline-block" href={% url 'categories' %}>Recipes ></a>
-            	<a class="text-uppercase nav-link" style="display:inline-block" href={% url 'category' object.category.slug %}>{{ object.category.name }} ></a>
+		<a class="text-uppercase nav-link" style="display:inline-block" href={% url 'category' object.category.slug %}><span itremprop="recipeCategory">{{ object.category.name }}</span> ></a>
             	<a class="text-uppercase nav-link" style="display:inline-block" href={% url 'recipe' object.slug %}>{{ object.name }}</a>
 	<div class="d-flex row">
 		<div class="col-md-4 ms-auto">
@@ -74,7 +74,7 @@
 			    </h2>
 			    <ol class="list-group list-group-numbered list-group-flush">
 				    {% for step in object.steps.all %}
-				    <li class="list-group-item bg-transparent">{{ step.description }}</li>
+				    <li class="list-group-item bg-transparent"><span itemprop="step">{{ step.description }}</span></li>
 				    {% endfor %}
 			    </ol>
 		    </div>
