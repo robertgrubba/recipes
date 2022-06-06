@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView,ListView,DetailView
 from .models import Recipe,Category
+from .forms import CalcForm
 # Create your views here.
 
 
@@ -375,3 +376,64 @@ class CategoryListView(ListView):
 
 class CategoryDetailView(DetailView):
     model = Category
+
+def calc(request):
+    if request.method == 'POST':
+        form = CalcForm(request.POST)
+        ok = True
+        saved_list = request.session['saved']
+        if form.is_valid():
+            if not 'finish' in request.session:
+                if form.cleaned_data['ingredient'] == None or form.cleaned_data['amount'] == None:
+                    ok = False
+            if ok:
+                if not 'saved' in request.session or not request.session['saved']:
+                    ingredient = {
+                            "id": form.cleaned_data['ingredient'].id,
+                            "name": form.cleaned_data['ingredient'].name,
+                            "amount": form.cleaned_data['amount'],
+                            "measure": form.cleaned_data['measure'],
+                            }
+                    request.session['saved']=[ingredient,]
+                    saved_list = request.session['saved']
+                else:
+                    saved_list = request.session['saved']
+                    if 'add_ingredient' in request.POST:
+                        ingredient = {
+                                "id": form.cleaned_data['ingredient'].id,
+                                "name": form.cleaned_data['ingredient'].name,
+                                "amount": form.cleaned_data['amount'],
+                                "measure": form.cleaned_data['measure'],
+                                }
+                        saved_list.append(ingredient)
+                        print(ingredient)
+                    request.session['saved']=saved_list
+
+                form = CalcForm()
+            else:
+                if 'finish' in request.POST and len(saved_list)>0:
+                    print(saved_list)
+
+                if 'remove_ingredient' in request.POST and len(saved_list)>0:
+                    saved_list.pop()
+                
+                if 'rmrf' in request.POST:
+                    saved_list = None
+                    request.session['saved'] = None
+                    request.session.modified = True
+
+                saved_list=request.session['saved']
+    else:
+        form = CalcForm()
+        if not 'saved' in request.session or not request.session['saved']:
+            saved_list = None
+        else:
+            saved_list = request.session['saved']
+
+
+    context = {
+            'form':form,
+            'saved_list':saved_list,
+            }
+
+    return render(request, 'recipes/calc_form.html',context)
