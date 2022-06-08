@@ -37,7 +37,9 @@
 	    </div>
 
   		<a class="text-uppercase nav-link" style="display:inline-block" href={% url 'categories' %}>Recipes ></a>
+		{% if object.category.slug %}
 		<a class="text-uppercase nav-link" style="display:inline-block" href={% url 'category' object.category.slug %}><span itremprop="recipeCategory">{{ object.category.name }}</span> ></a>
+		{% endif %}
             	<a class="text-uppercase nav-link" style="display:inline-block" href={% url 'recipe' object.slug %}>{{ object.name }}</a>
 	<div class="d-flex row">
 		<div class="col-md-4 ms-auto">
@@ -50,8 +52,11 @@
 		{% endif %}
 		</div>
 
-
+		 {% if not object.setps.all %}
+		    <div class="col-md-7 bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 ms-auto rounded">
+	         {% else %}
 		    <div class="col-md-4 bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 ms-auto rounded">
+		{% endif %}
 
 			    <h2 class="section-heading mb-3">
 				<span class="section-heading-lower">Ingredients</span>	  
@@ -67,6 +72,7 @@
 			</table>
 			    <p itemprop="description">{{ object.description }}</p>
 		    </div>
+		    {% if object.steps.all %}
 		    <div class="col-md-4 bg-faded p-3 mb-2 mb-lg-2 mt-lg-2 ms-auto rounded" itemprop="recipeInstructions" >
 			    <h2 class="section-heading mb-3">
 				<span class="section-heading-lower">Instructions</span>	  
@@ -78,6 +84,7 @@
 				    {% endfor %}
 			    </ol>
 		    </div>
+		    {% endif %}
 	</div>
 
 		    <div class="row" itemprop="nutrition"  itemscope itemtype="https://schema.org/NutritionInformation">

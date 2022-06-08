@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView,ListView,DetailView
-from .models import Recipe,Category
+from .models import Recipe,Category,Ingredient
 from .forms import CalcForm
+from ingredients.models import Ingredient as ING
+import datetime
+
 # Create your views here.
 
 
@@ -412,7 +415,26 @@ def calc(request):
                 form = CalcForm()
             else:
                 if 'finish' in request.POST and len(saved_list)>0:
+                    now = datetime.datetime.now()
+                    temp_recipe = Recipe(
+                            name="temporary recipe "+str(now)+" ",
+                            category = None,
+                            serves = 4,
+                            time = 10,
+                            description = "recipe from recipe calculator")
+                    temp_recipe.save()
+                    for ingredient in request.session['saved']:
+                        print(ingredient)
+                        new_ingredient = Ingredient(product=ING.objects.get(pk=int(ingredient['id'])), amount=ingredient['amount'], measure=ingredient['measure'])
+                        new_ingredient.save()
+                        temp_recipe.ingredients.add(new_ingredient)
+                        temp_recipe.save()
+
+                    temp_recipe.save()
                     print(saved_list)
+                    saved_list = None
+                    request.session['saved'] = None
+                    request.session.modified = True
 
                 if 'remove_ingredient' in request.POST and len(saved_list)>0:
                     saved_list.pop()
