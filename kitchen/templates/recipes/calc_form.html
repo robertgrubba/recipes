@@ -13,10 +13,10 @@
 		<form method="POST">
 			{% csrf_token %}
 			{{ form.as_p }}
-			<input type="submit" name="add_ingredient" value="Add">
-			<input type="submit" name="remove_ingredient" value="Remove Last one">
-			<input type="submit" name="rmrf" value="Remove All">
-			<input type="submit" name="finish" value="Finish">
+			<input type="submit" class="btn btn-primary" name="add_ingredient" value="Add">
+			<input type="submit" class="btn btn-warning" name="remove_ingredient" value="Remove Last one">
+			<input type="submit" class="btn btn-danger" name="rmrf" value="Remove All">
+			<input type="submit" class="btn btn-success" name="finish" value="Finish">
 		</form>
 	</div>
 {% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views.generic import TemplateView,ListView,DetailView
 from .models import Recipe,Category,Ingredient
 from .forms import CalcForm
@@ -431,10 +431,10 @@ def calc(request):
                         temp_recipe.save()
 
                     temp_recipe.save()
-                    print(saved_list)
                     saved_list = None
                     request.session['saved'] = None
                     request.session.modified = True
+                    return redirect(temp_recipe)
 
                 if 'remove_ingredient' in request.POST and len(saved_list)>0:
                     saved_list.pop()
