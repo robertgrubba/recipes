@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
+        <section class="page-section about-heading">
 <div class="container">
-	<div class="jumbotron bg-faded rounded">
+		    <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src={% static 'assets/img/about.jpg' %} alt="..." />
+		    <div class="about-heading-content">
+                    <div class="row">
+                        <div class="col-xl-9 col-lg-10 mx-auto">
+                            <div class="bg-faded rounded p-5">
 		<h1>Calculate nutrients of your meal</h1>
 		{% if not saved_list %}
 		<h2>How nutrient calculator works</h2>
@@ -29,5 +35,11 @@
 			<input type="submit" class="btn btn-danger" name="rmrf" value="Remove All">
 			<input type="submit" class="btn btn-success" name="finish" value="Finish">
 		</form>
+		    </div>
+			</div>
+		    </div>
+		    </div>
+
 	</div>
+	</section>
 {% endblock %}
