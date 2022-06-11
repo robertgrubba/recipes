@@ -384,7 +384,11 @@ def calc(request):
     if request.method == 'POST':
         form = CalcForm(request.POST)
         ok = True
-        saved_list = request.session['saved']
+        if not 'saved' in request.session or not request.session['saved']:
+            request.session['saved']=[]
+        else:
+            saved_list = request.session['saved']
+
         if form.is_valid():
             if not 'finish' in request.session:
                 if form.cleaned_data['ingredient'] == None or form.cleaned_data['amount'] == None:
@@ -424,7 +428,6 @@ def calc(request):
                             description = "recipe from recipe calculator")
                     temp_recipe.save()
                     for ingredient in request.session['saved']:
-                        print(ingredient)
                         new_ingredient = Ingredient(product=ING.objects.get(pk=int(ingredient['id'])), amount=ingredient['amount'], measure=ingredient['measure'])
                         new_ingredient.save()
                         temp_recipe.ingredients.add(new_ingredient)
@@ -438,6 +441,7 @@ def calc(request):
 
                 if 'remove_ingredient' in request.POST and len(saved_list)>0:
                     saved_list.pop()
+                    request.session['saved']=saved_list
                 
                 if 'rmrf' in request.POST:
                     saved_list = None
