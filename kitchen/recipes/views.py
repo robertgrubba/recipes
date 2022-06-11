@@ -381,6 +381,7 @@ class CategoryDetailView(DetailView):
     model = Category
 
 def calc(request):
+    verified = ING.objects.filter(draft=False).count()
     if request.method == 'POST':
         form = CalcForm(request.POST)
         ok = True
@@ -458,6 +459,7 @@ def calc(request):
 
 
     context = {
+            'verified':verified,
             'form':form,
             'saved_list':saved_list,
             }
