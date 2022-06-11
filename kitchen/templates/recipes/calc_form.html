@@ -30,10 +30,13 @@
 			{{ form.ingredient | as_crispy_field }}
 			{{ form.amount | as_crispy_field }}
 			{{ form.measure | as_crispy_field }}
+			<br><br>
+			<center>
 			<input type="submit" class="btn btn-primary" name="add_ingredient" value="Add">
 			<input type="submit" class="btn btn-warning" name="remove_ingredient" value="Remove Last one">
 			<input type="submit" class="btn btn-danger" name="rmrf" value="Remove All">
 			<input type="submit" class="btn btn-success" name="finish" value="Finish">
+			</center>
 		</form>
 		    </div>
 			</div>
