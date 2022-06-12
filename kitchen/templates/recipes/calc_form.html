@@ -3,6 +3,23 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
+{% block metadata %}
+<meta name="description" content="Free online Recipe Nutrient Calculator, based on our verified database of {{ verified }} ingredients. Just select the ingredients and its amounts and you will get wide nutrition facts about your meal. Free to use and available for unregistered users." />
+	<meta name="keywords" content="recipe,receipt,nutrients,calculator,vitamins,calories,minerals" />
+        <meta name="author" content="" />
+	<meta name="category" content="food" />
+	<meta name="revisit-after" content="30 days" />
+	<meta name='coverage' content='Worldwide' />
+	<meta name='distribution' content='Global' />
+
+	<meta property='og:title' content='Free online Recipe Nutrients Calculator' />
+	<meta property='og:type' content='calculator' />
+	<meta property='og:url' content='http://eatinghealthyis.fun{% url 'calculate' %}' />
+	<meta property='og:image' content='http://eatinghealthyis.fun{% static 'assets/img/weight.jpg'  %}' />
+	<meta property='og:site_name' content='Eating Healthy is Fun' />
+	<meta property='og:description' content='Free online recipe nutrients calculator' />
+        <title>Free online Recipe Nutrient Calculator - Eating Healthy is Fun</title>
+{% endblock %}
 {% block content %}
         <section class="page-section about-heading">
 <div class="container">
@@ -11,7 +28,7 @@
                     <div class="row">
                         <div class="col-xl-9 col-lg-10 mx-auto">
                             <div class="bg-faded rounded p-5">
-		<h1>Calculate nutrients of your meal</h1>
+		<h1>Free online Recipe Nutrient Calculator</h1>
 		{% if not saved_list %}
 		<h2>How nutrient calculator works</h2>
 		<p>Nutrition calculator is a free online tool, that is using our internal database of {{ verified }} verified ingredients to calculates the nutrition data. Just select all ingredients one by one (confirming with "add" button, and click finish if you put them all. Currently it displays only data for raw ingredients that may change after heat processing, it assumes that recipe serves 4 for given amounts of ingredients.</p>
@@ -19,6 +36,10 @@
 		<h2>List of ingredients for your recipe</h2>
 		<p>Just add the ingredients one, by one. If you don't provide data about amount of ingredient it will not be added to the list. You can share a link to your recipe calculations with others, but keep in mind that temporary calculations older than 1 month will be automatically deleted. In the future we will prepare features that will allow you to create your own recipes and share with others permanently, so stay tuned.</p>
 		<ul>
+			{% if saved_list %}
+	<h2><a name="ingredients">Your recipe ingredients list</a></h2>
+			{% endif %}
+
 			{% for item in saved_list %}
 			<li>{{ item.name }} {{ item.amount }} {{ item.measure }}</li>
 			{% endfor %}
