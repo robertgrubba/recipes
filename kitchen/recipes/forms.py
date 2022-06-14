@@ -20,7 +20,7 @@ class HoneypotField(forms.BooleanField):
 
 class CalcForm(forms.Form):
     accept_rules = HoneypotField(label=False)
-    ingredient = forms.ModelChoiceField(queryset=Ingredient.objects.filter(draft=False).all(),required=False)
+    ingredient = forms.ModelChoiceField(queryset=Ingredient.objects.filter(draft=False).order_by('-name').all(),required=False)
     amount = forms.FloatField(required=False)
     MEASURE_UNITS = (
             ('g','gram'),
