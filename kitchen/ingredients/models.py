@@ -88,6 +88,8 @@ class Ingredient(models.Model):
                 self.slug=slugify(self.name)+"-"+str(Ingredient.objects.filter(slug=slugify(self.name)).count())
             else:
                 self.slug = slugify(self.name)
+        if self.glass is None and self.cup is not None:
+            self.glass = round(self.cup*0.8,0)
         super(Ingredient, self).save(*args, **kwargs)
     
 
