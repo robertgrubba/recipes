@@ -1,4 +1,4 @@
-import datetime
+import datetime,requests,json,os
 from django_resized import ResizedImageField
 from django.db import models
 from django.urls import reverse
@@ -90,6 +90,43 @@ class Ingredient(models.Model):
                 self.slug = slugify(self.name)
         if self.glass is None and self.cup is not None:
             self.glass = round(self.cup*0.8,0)
+
+        if self.ndbn is not None and (self.calories is None or self.vitb5 is None or self.vitb9 is None or self.manganese is None):
+            url = 'https://api.nal.usda.gov/fdc/v1/foods/search'
+            params = dict(
+                api_key=os.environ.get("FDC_KEY"),
+                query=str(self.ndbn)
+            )
+
+            resp = requests.get(url=url, params=params).text
+            data = json.loads(resp)
+
+            for item in data['foods']:
+                if item['dataType']=='SR Legacy':
+                    for record in item['foodNutrients']:
+                        if record['nutrientName']=='Energy' and record['unitName']=='KCAL':
+			    #print('Calories: '+str(record['value']))
+                            self.calories = record['value']
+                        if record['nutrientName']=='Manganese, Mn':
+			    #print("Manganese: "+str(record['value'])+" "+str(record['unitName']))
+                            if record['unitName']=='MG':
+                                self.manganese = record['value']
+                            if record['unitName']=='UG':
+                                self.manganese = record['value']/1000
+                        if record['nutrientName']=='Folate, total':
+			    #print("Folate, total: "+str(record['value'])+" "+str(record['unitName']))
+                            if record['unitName']=='MG':
+                                self.vitb9 = record['value']
+                            if record['unitName']=='UG':
+                                self.vitb9 = record['value']/1000
+                        if record['nutrientName']=='Pantothenic acid':
+			    #print("Panthothenic acid: "+str(record['value'])+" "+str(record['unitName']))
+                            if record['unitName']=='MG':
+                                self.vitb5 = record['value']
+                            if record['unitName']=='UG':
+                                self.vitb5 = record['value']/1000
+
+
         super(Ingredient, self).save(*args, **kwargs)
     
 
