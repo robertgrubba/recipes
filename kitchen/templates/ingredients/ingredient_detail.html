@@ -10,7 +10,11 @@
 	<meta name='coverage' content='Worldwide' />
 	<meta name='distribution' content='Global' />
 
+	{% if object.ingredients.all %}
 	<meta property='og:title' content='{{ object.name | title }} | Nutrition data and recipes' />
+	{% else %}
+	<meta property='og:title' content='{{ object.name | title }} | Nutrition data' />
+	{% endif %}
 	<meta property='og:type' content='ingredient' />
 	<meta property='og:url' content='http://eatinghealthyis.fun/ingredients/{{object.slug}}' />
 	{% if object.image %}
