@@ -11,7 +11,7 @@
 	<meta name='coverage' content='Worldwide' />
 	<meta name='distribution' content='Global' />
 
-	<meta property='og:title' content='Recipe for: {{ object.name | title }} | {{ object.category.name }}' />
+	<meta property='og:title' content='Recipe for: {{ object.name | title }} | {{ object.category.name |title }}' />
 	<meta property='og:type' content='recipe' />
 	<meta property='og:url' content='http://eatinghealthyis.fun/recipes/{{object.slug}}' />
 	{% if object.image %}
