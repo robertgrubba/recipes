@@ -29,6 +29,7 @@
         <!-- Example row of columns -->
         <div class="row">
         {% for item in object.recipes.all %}
+	{% if not item.draft %}
           <div class="col-md-3 mt-4">
             <div class="bg-faded p-3 d-flex ms-auto rounded">
 		    <h2 class="section-heading mb-0">
@@ -43,6 +44,7 @@
 	    {% endif %}
 	    <div class="intro-button mx-auto" ><a class="btn btn-primary btn-l" href={% url 'recipe' item.slug %}>View Recipe</a></div>
           </div>
+	  {% endif %}
         {% endfor %}
         </div>
 
